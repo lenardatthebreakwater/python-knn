@@ -1,6 +1,6 @@
 import math
 import statistics
-from dataset import gender, dataset
+from dataset import dataset
 
 X_train = []
 for i in range(len(dataset)):
@@ -15,17 +15,20 @@ age = int(input("Age: "))
 weight = int(input("Weight(kg): "))
 gender = input("Gender: ")
 if gender == "male":
-    g = 1
+    female = 0
+    male = 1
 elif gender == "female":
-    g = 0
+    female = 1
+    male = 0
 x_test = []
 x_test.append(age)
 x_test.append(weight)
-x_test.append(g)
+x_test.append(female)
+x_test.append(male)
 
 distances = []
 for i in range(len(X_train)):
-    num = ((X_train[i][0] - x_test[0]) ** 2) + ((X_train[i][1] - x_test[1]) ** 2) + ((X_train[i][2] - x_test[2]) ** 2)
+    num = ((X_train[i][0] - x_test[0]) ** 2) + ((X_train[i][1] - x_test[1]) ** 2) + ((X_train[i][2] - x_test[2]) ** 2) + ((X_train[i][3] - x_test[3]) ** 2)
     distance = math.sqrt(num)
     distances.append(distance)
 
